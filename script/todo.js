@@ -4,6 +4,11 @@ import Storage from "../module/Storage.js";
 import { ParseTodoItem } from "../template/parseTodoItem.js";
 
 const $todoInputContainer = document.querySelector('.todo_input_container');
+const $inputBackDrop = document.querySelector('.input_back_drop');
+
+// date
+const $date = document.getElementById('today');
+
 
 // state
 const toolState = new State(null, activeTool);
@@ -12,6 +17,7 @@ function activeTool(state) {
         case 'write':
             initTools();
             $todoInputContainer.classList.add('active_todo_input');
+            $inputBackDrop.classList.remove('blind');
             break;
         case 'highlight':
             initTools();
@@ -26,9 +32,17 @@ function activeTool(state) {
             break;
     }
 }
+$inputBackDrop.addEventListener('click', () => {
+    const writeTool = document.getElementById('write');
+    initTools();
+    toolState.setState(null);
+    writeTool.classList.remove('active_tool');
+});
+
 function initTools() {
     // write
     $todoInputContainer.classList.remove('active_todo_input');
+    $inputBackDrop.classList.add('blind');
     // highlight
     const $listAll = document.querySelectorAll('.highlight_event_listener');
     for(let i = 0; i < $listAll.length; i++) {
