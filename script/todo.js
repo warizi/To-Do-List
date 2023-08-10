@@ -2,25 +2,36 @@ import ListManager from "../module/ListManager.js";
 import State from "../module/State.js";
 import Storage from "../module/Storage.js";
 import { ParseTodoItem } from "../template/parseTodoItem.js";
+import WaveApp from "../utils/wave/WaveApp.js"
 
 const $todoInputContainer = document.querySelector('.todo_input_container');
 const $inputBackDrop = document.querySelector('.input_back_drop');
 
 // date
 const $date = document.getElementById('today');
-
+const today = new Date();
+const year = today.getFullYear();
+const month = today.getMonth() + 1;
+const day = today.getDate();
+const week = today.getDay();
+const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+$date.textContent = `${year}.${month}.${day}(${dayOfWeek[week]})`;
 
 // state
 const toolState = new State(null, activeTool);
+const $background = document.querySelector('.container');
 function activeTool(state) {
     switch(state) {
         case 'write':
             initTools();
+            const input = document.querySelector('.todo_input');
             $todoInputContainer.classList.add('active_todo_input');
             $inputBackDrop.classList.remove('blind');
+            input.focus();
             break;
         case 'highlight':
             initTools();
+            $background.style.backgroundColor = 'rgba(240,134,132, 0.3)';
             const $listAll = document.querySelectorAll('.highlight_event_listener');
             for(let i = 0; i < $listAll.length; i++) {
                 $listAll[i].classList.remove('blind');
@@ -45,6 +56,7 @@ function initTools() {
     $inputBackDrop.classList.add('blind');
     // highlight
     const $listAll = document.querySelectorAll('.highlight_event_listener');
+    $background.style.backgroundColor = 'rgb(255, 253, 246)';
     for(let i = 0; i < $listAll.length; i++) {
         $listAll[i].classList.add('blind');
     }
@@ -139,4 +151,3 @@ function clickListEvent(e) {
 function renderList() {
     return todoList.init(todoStorage.getData()).clearList().render();
 }
-
