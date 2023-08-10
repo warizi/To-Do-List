@@ -2,7 +2,6 @@ import ListManager from "../module/ListManager.js";
 import State from "../module/State.js";
 import Storage from "../module/Storage.js";
 import { ParseTodoItem } from "../template/parseTodoItem.js";
-import WaveApp from "../utils/wave/WaveApp.js"
 
 const $todoInputContainer = document.querySelector('.todo_input_container');
 const $inputBackDrop = document.querySelector('.input_back_drop');
