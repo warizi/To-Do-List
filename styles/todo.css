@@ -21,7 +21,7 @@ header {
 }
 /* main */
 main {
-    height: 576px;
+    height: 500px;
     background-color: #d9d9d9;
     display: flex;
     flex-direction: column;
@@ -137,17 +137,17 @@ main {
     cursor: pointer;
 }
 #write {
-    background-image: url('/images/pen.png');
+    background-image: url('../images/pen.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
 #highlight {
-    background-image: url('/images/highlighter.png');
+    background-image: url('../images/highlighter.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
 #delete {
-    background-image: url('/images/eraser.png');
+    background-image: url('../images/eraser.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
