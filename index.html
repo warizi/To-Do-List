@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="편리하게 todo리스트를 관리합니다. to do 등록, to do 삭제, to do 체크, to do 강조를 통하여 간편하게 일정을 관리하세요.">
+    <link rel="stylesheet" href="./styles/todo.css">
+    <title>To-Do-List</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>To Do</h1>
+            <span>2023.08.07(월)</span>
+        </header>
+        <main>
+            <ul id="todo_list_container">
+            </ul>
+        </main>
+        <section class="footer">
+            <div class="todo_input_container">
+                <form action="/">
+                    <input type="text" placeholder="할일 등록" class="todo_input">
+                    <button class="submit_todo">추가</button>
+                </form>
+            </div>
+            <div class="tool" id="write">
+                작성
+            </div>
+            <div class="tool" id="highlight">
+                하이라이트
+            </div>
+            <div class="tool" id="delete">
+                삭제
+            </div>
+        </section>
+    </div>
+    <script type="module" src="./script/todo.js"></script>
+</body>
+</html>
