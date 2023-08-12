@@ -70,9 +70,9 @@
           <div class="checked unchecked" data-id=${id} ></div>    // 사용자가 checked를 클릭 시 unchecked 클래스 토글 (unchecked -> opacity: 0;)
       </button>
       <div class="list_content_container">
-          <span class="list_content">                  // 사용자가 입력한 내용을 담음.
+          <p class="list_content">                  // 사용자가 입력한 내용을 담음.
               ${content}
-          </span>
+          </p>
           <div class="neon_strong neon_blind"></div>    // neon_blind 클래스 토글 (neon_blind -> display: none;)
       </div>
       <button class="todo_delete" data-id=${id}>삭제</button>            // position: absolute; top: 0; right: -66px; (삭제버튼 비활성화 시 부모요소의 overflow: hidden에 가려짐.)
@@ -83,14 +83,14 @@
 
 ## JS & Module
 
-기능을 구현하기 위해 크게 3가지를 고려하여 기능을 구현하였습니다.
+기능을 구현하기 위해 크게 3가지를 고려하였습니다.
 1. localStorage를 불러오기, 저장, 삭제, 수정하기
 2. 유저의 입력에 따라 list의 정보를 관리하고 렌더링하기
 3. 3가지 tool(등록, 강조, 삭제) 선택 상태에 따라 기능 활성화 및 비활성화 하기
 
 ### 1. Storage
  - constructor(storageKey)
-      - this.storageKey : : 생성할 때 storageKey를 받아 해당 key의 localStorage만 관리합니다.
+      - this.storageKey : 생성할 때 storageKey를 받아 해당 key의 localStorage만 관리합니다.
       - this.data : localStorage의 데이터를 임시 저장합니다.
         
  - getData()
@@ -108,7 +108,7 @@
  - getStorage(key = this.storageKey)
    - this.data에 할당하지 않고 localStorage 데이터를 리턴합니다.
      
- - getUpdateStorage(key = this.storageKey, value = this.Data)
+ - updateStorage(key = this.storageKey, value = this.Data)
    - localStorage에 데이터를 저장합니다.
      
  - updateData(id, updateProp ,updateValue)
