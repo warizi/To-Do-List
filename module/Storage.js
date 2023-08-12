@@ -34,6 +34,23 @@ class Storage {
         });
         return this
     }
+        /**
+         * 같은 id 값을 가진 객체의 프로퍼티의 값을 updateValue로 변경합니다.
+         * @param {number} id 
+         * @param {string} updateProp 
+         * @param {*} updateValue 
+         * @returns {Storage} 인스턴스 자체를 반환하여 메서드 체이닝 가능
+         */
+    updateData(id, updateProp ,updateValue) {
+        const targetIndex = this.Data.findIndex(item => item.id === id);
+
+        if(targetIndex !== -1) {
+            this.Data[targetIndex][updateProp] = updateValue;
+        }
+        return this;
+    }
+    
+    // utils
     createId() {
         const data = this.getStorage();
         const lastIndex = data.length - 1;
@@ -45,14 +62,6 @@ class Storage {
     }
     updateStorage(key = this.storageKey, value = this.Data) {
         window.localStorage.setItem(key, JSON.stringify(value));
-    }
-    updateData(id, updateProp ,updateValue) {
-        const targetIndex = this.Data.findIndex(item => item.id === id);
-
-        if(targetIndex !== -1) {
-            this.Data[targetIndex][updateProp] = updateValue;
-        }
-        return this;
     }
 }
 export default Storage

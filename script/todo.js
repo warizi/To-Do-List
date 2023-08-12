@@ -19,6 +19,7 @@ $date.textContent = `${year}.${month}.${day}(${dayOfWeek[week]})`;
 // state
 const toolState = new State(null, activeTool);
 const $background = document.querySelector('.container');
+
 function activeTool(state) {
     switch(state) {
         case 'write':
@@ -40,8 +41,12 @@ function activeTool(state) {
             initTools();
             $todoContainer.classList.add('active_delete');
             break;
+        default:
+            initTools();
+            break;
     }
 }
+
 $inputBackDrop.addEventListener('click', () => {
     const writeTool = document.getElementById('write');
     initTools();
@@ -95,9 +100,11 @@ const todoList = new ListManager($todoContainer, ParseTodoItem);
 renderList();
 
 todoList.addEvent('click', clickListEvent);
+
 $submitBtn.addEventListener('click', (e) => {
     e.preventDefault();
     const value = $todoInput.value;
+
     if(value !== '') {
         const newData = {
             content: value,

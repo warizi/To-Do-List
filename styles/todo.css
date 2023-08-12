@@ -10,7 +10,8 @@ input {
 }
 .container {
     position: relative;
-    max-width: 400px;
+    max-width: 800px;
+    width: 100vw;
     margin: 0 auto;
     overflow: hidden;
     height: 100vh;
@@ -36,22 +37,36 @@ main {
     overflow: scroll;
     overflow-x: hidden;
 }
+#todo_list_container {
+    width: 100%;
+}
 
 .list_item {
-    width: 380px;
-    height: 60px;
-    /* border-radius: 10px; */
+    width: 100%;
+    min-height: 60px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 14px;
+    padding: 8px 14px;
     margin-bottom: 2px;
     border-bottom: 1px dashed black;
-    /* box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.3); */
     position: relative;
     transition: 0.2s;
     z-index: 10;
+}
+.list_content_container {
+    position: relative;
+    width: calc(100% - 50px);
+    font-size: 16px;
+    line-height: 33px;
+    overflow: hidden;
+}
+.list_content {
+    white-space: normal;
+    word-wrap:break-word;
+    width: 100%;
+    line-height: 25px;
 }
 .todo_delete {
     width: 56px;
@@ -91,16 +106,9 @@ main {
 .unchecked {
     opacity: 0;
 }
-.list_content_container {
-    position: relative;
-    width: 305px;
-    height: 33px;
-    font-size: 16px;
-    line-height: 33px;
-}
 .neon_strong {
-    width: 305px;
-    height: 33px;
+    width: 100%;
+    height: 100%;
     background-color: rgba(240, 134, 134, 0.3);
     position: absolute;
     top: 0;
@@ -111,7 +119,7 @@ main {
     display: none;
 }
 .highlight_event_listener {
-    width: 380px;
+    width: 100%;
     height: 60px;
     border-radius: 10px;
     position: absolute;
@@ -123,13 +131,16 @@ main {
 
 /* footer */
 .footer {
-    width: 390px;
+    max-width: 800px;
+    width: 100vw;
     height: 100px;
+    position: relative;
+}
+.tool_container {
+    width: fit-content;
     display: flex;
     flex-direction: row;
-    padding: 0 34px;
-    justify-content: space-between;
-    position: relative;
+    margin: 0 auto;
 }
 .tool {
     transition: 0.2s;
@@ -139,21 +150,20 @@ main {
     padding-top: 20px;
     color: white;
     cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.tool + .tool {
+    margin-left: 15px;
 }
 #write {
     background-image: url('../images/pen.png');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 #highlight {
     background-image: url('../images/highlighter.png');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 #delete {
     background-image: url('../images/eraser.png');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 .active_tool {
     transform: translateY(-30px);
