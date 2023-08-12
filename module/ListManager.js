@@ -12,6 +12,7 @@ class ListManager {
         this.template = parseTemplate;
         this.container = container;
     }
+
         /**
          * 초기 데이터로 리스트 아이템을 초기화합니다.
          * @param {Array} data - 초기 데이터 배열
@@ -25,6 +26,7 @@ class ListManager {
 
         return this
     } 
+
         /**
          * 리스트 아이템을 모두 삭제합니다.
          * @returns {ListManager} - 인스턴스 자체를 반환하여 메서드 체이닝 가능
@@ -36,6 +38,7 @@ class ListManager {
         
         return this
     }
+
         /**
          * 리스트 아이템을 렌더링합니다.
          * @returns {ListManager} - 인스턴스 자체를 반환하여 메서드 체이닝 가능
@@ -47,6 +50,7 @@ class ListManager {
 
         return this
     }
+    
         /**
          * 리스트 컨테이너에 이벤트 핸들러를 추가합니다.
          * @param {string} eventType - 이벤트 타입 (예: 'click', 'change' 등)
