@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/todo.css">
+    <link rel="stylesheet" href="./assets/styles/todo.css">
     <link rel="manifest" href="manifest.json" />    
     <script>navigator.serviceWorker.register("service-worker.js")</script> 
     <title>To-Do-List</title>
@@ -20,7 +20,15 @@
     <div class="container">
         <header>
             <h1 class="title">To Do</h1>
-            <span id="today">2023.08.07(월)</span>
+            <span id="today"></span>
+            <div class="post_it_flag_wrapper">
+                <ul class="post_it_flag_container">
+                    <li class="post_it_flag"></li>
+                    <li class="post_it_flag"></li>
+                    <li class="post_it_flag"></li>
+                    <li class="post_it_flag"></li>
+                </ul>
+            </div>
         </header>
         <main>
             <div class="todo_input_container">
@@ -29,21 +37,28 @@
                     <button class="submit_todo">추가</button>
                 </form>
             </div>
-            <ul id="todo_list_container">
-                <!-- <li class="list_item">
-                        <button class="check_box">
-                            <div class="checked unchecked"></div>
-                        </button>
-                        <div class="list_content_container">
-                            <p class="list_content">
-                                일정등록하세요.
-                            </p>
-                            <div class="neon_strong"></div>
-                        </div>
-                        <button class="todo_delete">삭제</button>
-                        <div class="highlight_event_listener blind"></div>
-                </li> -->
-            </ul>
+            <section class="main_contents_container page_todo">
+                <div class="repeating_schedule_container">
+                    리피팅
+                </div>
+                <div class="todo_overflow_hidden">
+                    <ul id="todo_list_container">
+                        <!-- <li class="list_item">
+                                <button class="check_box">
+                                    <div class="checked unchecked"></div>
+                                </button>
+                                <div class="list_content_container">
+                                    <p class="list_content">
+                                        일정등록하세요.
+                                    </p>
+                                    <div class="neon_strong"></div>
+                                </div>
+                                <button class="todo_delete">삭제</button>
+                                <div class="highlight_event_listener blind"></div>
+                        </li> -->
+                    </ul>
+                </div>
+            </section>
         </main>
         <section class="footer">
             <div class="tool_container">
@@ -57,6 +72,6 @@
         </section>
         <div class="input_back_drop blind"></div>
     </div>
-    <script type="module" src="./script/todo.js"></script>
+    <script type="module" src="./App.js"></script>
 </body>
 </html>

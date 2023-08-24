@@ -31,7 +31,7 @@ class ListManager {
          * 리스트 아이템을 모두 삭제합니다.
          * @returns {ListManager} - 인스턴스 자체를 반환하여 메서드 체이닝 가능
          */
-    clearList() {
+    removeAllItems() {
         while(this.container.firstChild) {
             this.container.removeChild(this.container.firstChild);
         };
