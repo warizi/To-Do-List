@@ -72,7 +72,7 @@ main {
     border-bottom: 1px dashed black; */
 }
 .week_item {
-    width: calc((100vw - 20px) / 7);
+    width: calc((100vw - 21px) / 7);
     height: 80px;
     text-align: center;
     cursor: pointer;
