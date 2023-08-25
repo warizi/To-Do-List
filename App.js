@@ -73,7 +73,7 @@ function addTodoList(event) {
     const value = $todoInput.value;
 
     if(store.getStore().page === 'repeat' && value !== '') {
-        weeks.forEach((week) => {
+        store.getStore().week.forEach((week) => {
             const newData = {
                 content: value,
                 id: weeksStorage[week].createId(),
