@@ -45,6 +45,7 @@ main {
 }
 .main_contents_container {
     position: absolute;
+    height: inherit;
     top: 0;
     left: 0;
     display: flex;
@@ -60,7 +61,10 @@ main {
 /* repeating */
 .repeating_schedule_container {
     width: 100vw;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .select_week {
     display: flex;
@@ -72,7 +76,6 @@ main {
 .week_item {
     width: calc((100vw - 21px) / 7);
     height: 80px;
-    text-align: center;
     cursor: pointer;
 }
 .week_item + .week_item {
@@ -93,6 +96,8 @@ main {
 }
 .week_list_container {
     width: 100vw;
+    height: 500px;
+    overflow: scroll;
     overflow-x: hidden;
 }
 .week_list_container hr {
@@ -101,6 +106,7 @@ main {
 }
 .week_list_container .week_hr {
     display: block;
+    text-align: center;
     width: 100%;
     font-weight: bold;
     height: 30px;
@@ -109,6 +115,7 @@ main {
 .todo_overflow_hidden {
     width: 100vw;
     overflow-x: hidden;
+    overflow-y: scroll;
 }
 #todo_list_container {
     width: 100vw;
