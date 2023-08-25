@@ -70,12 +70,13 @@ main {
     display: flex;
     flex-direction: row;
     margin: 0 10px;
+    text-align: center;
     padding: 10px 0;
     border: 1px dashed black;
 }
 .week_item {
     width: calc((100vw - 21px) / 7);
-    height: 80px;
+    height: 30px;
     cursor: pointer;
 }
 .week_item + .week_item {
