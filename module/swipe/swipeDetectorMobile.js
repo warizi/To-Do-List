@@ -12,7 +12,6 @@ export function pageSwipeDetectorMobile(EventElement) {
 
     function moveEvent(eventMove) {
       dragLengthX = eventMove.changedTouches[0].clientX - startPoint;
-      console.log(dragLengthX);
     }
 
     // clearEvent (clear side effect)

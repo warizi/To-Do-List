@@ -12,4 +12,10 @@ export function displayToday(todayElement) {
     const week = today.getDay();
     const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
     todayElement.textContent = `${year}.${month}.${day}(${dayOfWeek[week]})`;
+    if(week === 0) {
+        todayElement.style.color = '#F08686';
+    }
+    if(week === 6) {
+        todayElement.style.color = '#86BDF0';
+    }
 }

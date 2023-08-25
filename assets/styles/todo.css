@@ -49,7 +49,7 @@ main {
     left: 0;
     display: flex;
     flex-direction: row;
-    transition: 0.5s;
+    transition: 0.2s;
 }
 .page_todo {
     left: -100vw;
@@ -60,8 +60,28 @@ main {
 /* repeating */
 .repeating_schedule_container {
     width: 100vw;
-    height: 100px;
-    background-color: aqua;
+    text-align: center;
+}
+.select_week {
+    display: flex;
+    flex-direction: row;
+    margin: 0 10px;
+    padding: 10px 0;
+    border: 1px dashed black;
+    /* border-top: 1px dashed black;
+    border-bottom: 1px dashed black; */
+}
+.week_item {
+    width: calc((100vw - 20px) / 7);
+    height: 80px;
+    text-align: center;
+    cursor: pointer;
+}
+.week_item + .week_item {
+    border-left: 1px dashed black;
+}
+.week_selected {
+    background-color: #f77171;
 }
 /* todo list */
 .todo_overflow_hidden {

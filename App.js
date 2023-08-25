@@ -17,8 +17,10 @@ import { activeTool } from "./module/writingTools/activeTools.js";
 import { pageSwipeDetector } from "./module/swipe/swipeDetector.js";
 import Store from "./module/store/store.js";
 import { pageSwipeDetectorMobile } from "./module/swipe/swipeDetectorMobile.js";
+import { weekPicker } from "./module/weekPicker/weekPicker.js";
 // store
 const store = new Store();
+
 // date
 displayToday($todaySpan);
 
@@ -29,6 +31,7 @@ $inputBackDrop.addEventListener('click', () => {
     initTools();
     toolState.setState(null);
 });
+
 // swipe
 pageSwipeDetector($mainContainer);
 pageSwipeDetectorMobile($mainContainer);
@@ -124,3 +127,7 @@ $flagWrapper.addEventListener('click', (e) => {
     toolState.setState(null);
     initTools();
 })
+
+// repeating page
+weekPicker();
+
