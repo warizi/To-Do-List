@@ -1,5 +1,5 @@
-import { $contentsContainer } from "../DOMElements/Elements.js";
-import Store from "./store/store.js";
+import { $contentsContainer } from "../../DOMElements/Elements.js";
+import Store from "../store/store.js";
 
 export function pageSwipeDetector(EventElement) {
   const store = new Store();

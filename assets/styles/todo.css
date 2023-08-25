@@ -33,6 +33,7 @@ header {
 }
 /* main */
 main {
+    user-select: none;
     position: relative;
     height: calc(85vh - 100px);
     display: flex;

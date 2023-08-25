@@ -14,8 +14,9 @@ import {
 } from "./DOMElements/Elements.js";
 import { initTools } from "./module/writingTools/initTools.js";
 import { activeTool } from "./module/writingTools/activeTools.js";
-import { pageSwipeDetector } from "./module/swipeDetector.js";
+import { pageSwipeDetector } from "./module/swipe/swipeDetector.js";
 import Store from "./module/store/store.js";
+import { pageSwipeDetectorMobile } from "./module/swipe/swipeDetectorMobile.js";
 // store
 const store = new Store();
 // date
@@ -30,6 +31,7 @@ $inputBackDrop.addEventListener('click', () => {
 });
 // swipe
 pageSwipeDetector($mainContainer);
+pageSwipeDetectorMobile($mainContainer);
 
 // tool
 for(let i = 0; i < $allTools.length; i++) {
