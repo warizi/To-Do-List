@@ -32,7 +32,6 @@ export function weekPicker() {
 }
 
 function setSelectWeekText(weekState) {
-  console.log(isWeekDays(weekState));
   if(isWeekDays(weekState)) {
     $displaySelected.innerText = `평일마다 일정 추가`;
     return;

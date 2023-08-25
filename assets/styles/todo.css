@@ -81,7 +81,17 @@ main {
     border-left: 1px dashed black;
 }
 .week_selected {
-    background-color: #f77171;
+    background-color: rgba(240, 134, 134, 0.3);
+}
+#week_sun {
+    color: #f77171;
+}
+#week_sat {
+    color: #86BDF0;
+}
+.week_list_container {
+    width: 100vw;
+    overflow-x: hidden;
 }
 /* todo list */
 .todo_overflow_hidden {

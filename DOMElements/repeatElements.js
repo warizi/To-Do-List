@@ -7,6 +7,13 @@ const $weekThu = document.getElementById('week_thu');
 const $weekFri = document.getElementById('week_fri');
 const $weekSat = document.getElementById('week_sat');
 const $displaySelected = document.querySelector('.display_selected_week');
+const $monContainer = document.getElementById('mon_list');
+const $tueContainer = document.getElementById('tue_list');
+const $wedContainer = document.getElementById('wed_list');
+const $thuContainer = document.getElementById('thu_list');
+const $friContainer = document.getElementById('fri_list');
+const $satContainer = document.getElementById('sat_list');
+const $sunContainer = document.getElementById('sun_list');
 export {
   $repeatContainer,
   $weekSun,
@@ -17,4 +24,11 @@ export {
   $weekFri,
   $weekSat,
   $displaySelected,
+  $monContainer,
+  $tueContainer,
+  $wedContainer,
+  $thuContainer,
+  $friContainer,
+  $satContainer,
+  $sunContainer,
 }

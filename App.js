@@ -18,6 +18,7 @@ import { pageSwipeDetector } from "./module/swipe/swipeDetector.js";
 import Store from "./module/store/store.js";
 import { pageSwipeDetectorMobile } from "./module/swipe/swipeDetectorMobile.js";
 import { weekPicker } from "./module/weekPicker/weekPicker.js";
+import { $friContainer, $monContainer, $satContainer, $sunContainer, $thuContainer, $tueContainer, $wedContainer } from "./DOMElements/repeatElements.js";
 // store
 const store = new Store();
 
@@ -55,6 +56,14 @@ function selectTool(e) {
 
 // list
 const todoStorage = new Storage('todo');
+const weeksStorage = {
+    Mon: new Storage('Mon'),
+    Tue: new Storage('Tue'),
+    Wed: new Storage('Fri'),
+    Thu: new Storage('Thu'),
+    Fri: new Storage('Sat'),
+    Sun: new Storage('Sun'),
+}
 const todoList = new ListManager($todoContainer, ParseTodoItem);
 
 renderList();
@@ -67,7 +76,22 @@ function addTodoList(event) {
     event.preventDefault();
     const value = $todoInput.value;
 
-    if(value !== '') {
+    if(store.getStore().page === 'repeat' && value !== '') {
+        const weekState = store.getStore().week;
+        weekState.forEach((week) => {
+            const newData = {
+                content: value,
+                id: weeksStorage[week].createId(),
+                heighlight: false,
+                checked: false,
+            }
+            weeksStorage[week].addItem(newData).updateStorage();
+        })
+        $todoInput.value = '';
+        return;
+    }
+
+    if(store.getStore().page === 'common' && value !== '') {
         const newData = {
             content: value,
             id: todoStorage.createId(),
@@ -113,6 +137,27 @@ function clickListEvent(event) {
         default:
             break;
     }
+}
+// week list
+const weekList = {
+    Mon: new ListManager($monContainer, ParseTodoItem),
+    Tue: new ListManager($tueContainer, ParseTodoItem),
+    Wed: new ListManager($wedContainer, ParseTodoItem),
+    Thu: new ListManager($thuContainer, ParseTodoItem),
+    Fri: new ListManager($friContainer, ParseTodoItem),
+    Sat: new ListManager($satContainer, ParseTodoItem),
+    Sun: new ListManager($sunContainer, ParseTodoItem),
+}
+
+const weeks = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+weeks.forEach((week) => {
+    weekRenderList(weekList[week], weeksStorage[week]);
+})
+
+function weekRenderList(weekList, storage) {
+    if(!storage)return;
+    return weekList.init(storage.getData()).removeAllItems().render();
 }
 
 function renderList() {
