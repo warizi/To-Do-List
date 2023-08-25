@@ -5,6 +5,7 @@ import {
   $todoContainer, 
   $todoInputContainer 
 } from "../../DOMElements/Elements.js";
+import { weekContainers, weeks } from "../repeat/repeatList.js";
 
 export function initTools() {
   for(let i = 0; i < $allTools.length; i++) {
@@ -21,4 +22,7 @@ export function initTools() {
   }
   // delete
   $todoContainer.classList.remove('active_delete');
+  weeks.forEach((week) => {
+    weekContainers[week].classList.remove('active_delete');
+  })
 }

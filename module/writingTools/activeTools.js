@@ -4,6 +4,7 @@ import { $appBackground,
   $todoInput, 
   $todoInputContainer 
 } from "../../DOMElements/Elements.js";
+import { weekContainers, weeks } from "../repeat/repeatList.js";
 import { initTools } from "./initTools.js";
 
 export function activeTool(state) {
@@ -25,6 +26,9 @@ export function activeTool(state) {
       case 'delete':
           initTools();
           $todoContainer.classList.add('active_delete');
+          weeks.forEach((week) => {
+            weekContainers[week].classList.add('active_delete');
+          })
           break;
       default:
           initTools();

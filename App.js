@@ -18,7 +18,10 @@ import { pageSwipeDetector } from "./module/swipe/swipeDetector.js";
 import Store from "./module/store/store.js";
 import { pageSwipeDetectorMobile } from "./module/swipe/swipeDetectorMobile.js";
 import { weekPicker } from "./module/weekPicker/weekPicker.js";
-import { $friContainer, $monContainer, $satContainer, $sunContainer, $thuContainer, $tueContainer, $wedContainer } from "./DOMElements/repeatElements.js";
+import { clickListEvent } from "./module/listEvent/clickListEvent.js";
+import { renderWeeks, weeks, weeksStorage } from "./module/repeat/repeatList.js"
+
+
 // store
 const store = new Store();
 
@@ -56,19 +59,12 @@ function selectTool(e) {
 
 // list
 const todoStorage = new Storage('todo');
-const weeksStorage = {
-    Mon: new Storage('Mon'),
-    Tue: new Storage('Tue'),
-    Wed: new Storage('Fri'),
-    Thu: new Storage('Thu'),
-    Fri: new Storage('Sat'),
-    Sun: new Storage('Sun'),
-}
+
 const todoList = new ListManager($todoContainer, ParseTodoItem);
 
 renderList();
 
-todoList.addEvent('click', clickListEvent);
+todoList.addEvent('click', (event) => clickListEvent(event, todoStorage, renderList));
 
 $submitTodoInputBtn.addEventListener('click', event => addTodoList(event));
 
@@ -77,8 +73,7 @@ function addTodoList(event) {
     const value = $todoInput.value;
 
     if(store.getStore().page === 'repeat' && value !== '') {
-        const weekState = store.getStore().week;
-        weekState.forEach((week) => {
+        weeks.forEach((week) => {
             const newData = {
                 content: value,
                 id: weeksStorage[week].createId(),
@@ -87,6 +82,7 @@ function addTodoList(event) {
             }
             weeksStorage[week].addItem(newData).updateStorage();
         })
+        renderWeeks();
         $todoInput.value = '';
         return;
     }
@@ -107,58 +103,6 @@ function addTodoList(event) {
     $todoInput.value = '';
 }
 
-function clickListEvent(event) {
-    const id = Number(event.target.dataset.id);
-    const target = event.target;
-    const classList = event.target.classList;
-    
-    switch(classList[0]) {
-        case 'checked':
-            if(classList.contains('unchecked')){
-                todoStorage.updateData(id, 'checked', true).updateStorage();
-            } else {
-                todoStorage.updateData(id, 'checked', false).updateStorage();
-            }
-            classList.toggle('unchecked');
-            break;
-        case 'todo_delete':
-            todoStorage.deleteItem(id).updateStorage();
-            renderList();
-            break;
-        case 'highlight_event_listener':
-            const $highlight = target.parentNode.querySelector('.neon_strong');
-            if($highlight.classList.contains('neon_blind')) {
-                todoStorage.updateData(id, 'highlight', true).updateStorage();
-            } else {
-                todoStorage.updateData(id, 'highlight', false).updateStorage();
-            }
-            $highlight.classList.toggle('neon_blind');
-            break;
-        default:
-            break;
-    }
-}
-// week list
-const weekList = {
-    Mon: new ListManager($monContainer, ParseTodoItem),
-    Tue: new ListManager($tueContainer, ParseTodoItem),
-    Wed: new ListManager($wedContainer, ParseTodoItem),
-    Thu: new ListManager($thuContainer, ParseTodoItem),
-    Fri: new ListManager($friContainer, ParseTodoItem),
-    Sat: new ListManager($satContainer, ParseTodoItem),
-    Sun: new ListManager($sunContainer, ParseTodoItem),
-}
-
-const weeks = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-
-weeks.forEach((week) => {
-    weekRenderList(weekList[week], weeksStorage[week]);
-})
-
-function weekRenderList(weekList, storage) {
-    if(!storage)return;
-    return weekList.init(storage.getData()).removeAllItems().render();
-}
 
 function renderList() {
     return todoList.init(todoStorage.getData()).removeAllItems().render();
